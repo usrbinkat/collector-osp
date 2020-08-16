@@ -2,7 +2,7 @@
 images_cloudctl:
   - uri: "docker.io/codesparta"
     name: konductor
-    tag: latest
+    tag: nightlies
     path: "{{ dir_deploy }}/images"
   - uri: "k8s.gcr.io"
     name: pause
