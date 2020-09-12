@@ -137,4 +137,38 @@ spec:
       path: /root/deploy
       type: Directory
     name: root-deploy
+  - command:
+    - -conf
+    - /root/Corefile
+    env:
+    - name: PATH
+      value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    - name: TERM
+      value: xterm
+    - name: HOSTNAME
+      value: coredns
+    - name: container
+      value: podman
+    image: docker.io/coredns/coredns:latest
+    name: coredns
+    ports:
+    - containerPort: 5353
+      hostPort: 53
+      protocol: UDP
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      seLinuxOptions: {}
+    volumeMounts:
+    - mountPath: /root
+      name: root-deploy-coredns
+    workingDir: /
+  volumes:
+  - hostPath:
+      path: /root/deploy/coredns
+      type: Directory
+    name: root-deploy-coredns
 status: {}
