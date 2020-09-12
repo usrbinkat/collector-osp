@@ -24,3 +24,7 @@ images_cloudctl:
     name: registry
     tag: latest
     path: "{{ dir_deploy }}/images"
+  - uri: "docker.io/coredns"
+    name: coredns
+    tag: latest
+    path: "{{ dir_deploy }}/images"

@@ -17,6 +17,7 @@
     - '{{ dir_deploy }}/secrets/registry'
     - '{{ dir_deploy }}/secrets/registry/ssl'
     - '{{ dir_deploy }}/secrets/registry/auth'
+    - '{{ dir_deploy }}/coredns'
 
 - name: '{{ ansible_name_module }} | template | Stage CloudCtl Startup Assets' 
   template:
