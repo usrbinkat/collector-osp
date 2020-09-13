@@ -29,3 +29,4 @@
     - { mode: '0775', src: '{{ dir_koffer }}/templates/bin/konductor.sh.j2', dest: '/tmp/konductor.sh' }
     - { mode: '0775', src: '{{ dir_koffer }}/templates/pod/cloudctl.yml.j2', dest: '/tmp/cloudctl.yml' }
     - { mode: '0775', src: '{{ dir_koffer }}/templates/registry/etc-docker-registry-config.yml.j2', dest: '/root/deploy/mirror/config.yml' }
+    - { mode: '0775', src: '{{ dir_koffer }}/templates/pod/Corefile-temp.j2', dest: '/{{ dir_deploy }}/Corefile' }
