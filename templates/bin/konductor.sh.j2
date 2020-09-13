@@ -497,7 +497,7 @@ EOF
 
 export timestamp="$(date '+%Y%m%d%H')"
 
-cat <<EOF > ${k9DirDeploy}/coredns/${k9NameDomain}.${k9NameCluster}.db
+cat <<EOF > ${k9DirDeploy}/coredns/${k9NameCluster}.${k9NameDomain}.db
 ${k9NameCluster}.${k9NameDomain}.        IN  SOA registry.${k9NameCluster}.${k9NameDomain}. admin.${k9NameCluster}.${k9NameDomain}. ${timestamp} 7200 3600 1209600 3600
 
 registry.${k9NameCluster}.${k9NameDomain}.    IN  A   ${varDnsPrivateIp}
