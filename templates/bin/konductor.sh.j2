@@ -60,6 +60,7 @@ aws_secret_access_key: "${k9AwsKeySecret}"
 target_environment: "${k9TargetEnvironment}"
 subnet_list: ${k9SubnetList}
 dns_private_ip: "${varDnsPrivateIp}"
+amazon_dns_ip: "${amazonDnsIp}"
 EOF
 }
 
@@ -483,7 +484,7 @@ update_coredns () {
 
 cat <<EOF > ${k9DirDeploy}/coredns/Corefile
 .:5353 {
-    forward . 8.8.8.8 9.9.9.9
+    forward . ${amazon_dns_ip}:53
     log
     errors
 }
