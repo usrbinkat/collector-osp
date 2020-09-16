@@ -484,7 +484,7 @@ update_coredns () {
 
 cat <<EOF > ${k9DirDeploy}/coredns/Corefile
 .:5353 {
-    forward . ${amazon_dns_ip}:53
+    forward . $${amazonDnsIp}:53
     log
     errors
 }
