@@ -7,22 +7,23 @@
     module: "images"
     ansible_name_module: "{{ ansible_name }} | {{ module }}"
   tasks:
-#   - name: '{{ ansible_name_module }} | get_url:url | Place OSP Images Manifest JSON'
-#     get_url:
-#       url: 'https://registry.redhat.io/v1/search?q=%27rhosp-rhel8%20or%20rhceph-4%20or%20ose-grafana%20or%20ose-prometheus%27'
-#       dest: '{{ dir_platform }}/nginx/osp/images.json'
-#       mode: 0775
+#   - name: "{{ ansible_name_module }} | command:jq.results.name | Itemize OSP Images List"
+#     shell: |
+#       podman search --format \{{.Name\}} registry.redhat.io/rhosp | tail -n+2
+#     register: osp_images_list
+#   - debug: msg="{{ osp_images_list }}"    
+
+    - name: '{{ ansible_name_module }} | get_url:url | Place OSP Images Manifest JSON'
+      get_url:
+        url: 'https://registry.redhat.io/v1/search?q=%27rhosp-rhel8'
+        dest: '{{ dir_platform }}/nginx/osp/images.json'
+        mode: 0775
+       #url: 'https://registry.redhat.io/v1/search?q=%27rhosp-rhel8%20or%20rhceph-4%20or%20ose-grafana%20or%20ose-prometheus%27'
     
     - name: "{{ ansible_name_module }} | command:jq.results.name | Itemize OSP Images List"
       shell: |
-        podman search --format \{\{.Name\}\} registry.redhat.io/rhosp | tail -n+2
+          jq -r ".results[] .name" {{ dir_platform }}/nginx/osp/images.json
       register: osp_images_list
-    - debug: msg="{{ osp_images_list }}"    
-
-#   - name: "{{ ansible_name_module }} | command:jq.results.name | Itemize OSP Images List"
-#     shell: |
-#         jq -r ".results[] .name" {{ dir_platform }}/nginx/osp/images.json
-#     register: osp_images_list
     
     - name: '{{ ansible_name_module }} | file:directory | Create mirror artifact directories'
       file:
