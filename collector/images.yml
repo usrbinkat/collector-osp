@@ -17,7 +17,8 @@
       shell: |
         podman search --format \{\{.Name\}\} registry.redhat.io/rhosp | tail -n+2
       register: osp_images_list
-    - debug: msg="{{ osp_images_list.stdout_lines }}"    
+    - debug: msg="{{ osp_images_list }}"    
+
 #   - name: "{{ ansible_name_module }} | command:jq.results.name | Itemize OSP Images List"
 #     shell: |
 #         jq -r ".results[] .name" {{ dir_platform }}/nginx/osp/images.json
