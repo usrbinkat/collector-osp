@@ -20,6 +20,7 @@
         - '{{ dir_platform }}'
         - '{{ dir_platform }}/mirror'
         - '{{ dir_platform }}/secrets'
+        - '{{ dir_platform }}/nginx/osp'
         - '{{ dir_platform }}/nginx/rhcos'
         - '{{ dir_platform }}/nginx/openshift/latest'
 

@@ -13,14 +13,11 @@
         state: absent
       loop:
         - '{{ dir_platform }}'
-        - '{{ dir_platform }}/nginx/openshift/latest/release.txt'
-        - '{{ dir_bundle }}/koffer-bundle.ocp-{{ version_openshift }}.tar.xz'
-        - '{{ dir_bundle }}/koffer-bundle.ocp-{{ version_openshift }}.tar.xz.sha256'
+        - '{{ dir_platform }}/nginx/osp/images.json'
+        - '{{ dir_bundle }}/koffer-bundle.osp-{{ version_osp }}.tar.xz'
+        - '{{ dir_bundle }}/koffer-bundle.osp-{{ version_osp }}.tar.xz.sha256'
       when: clean_purge_artifacts == True
 
 - import_playbook: tree.yml         # Create base directory tree
-- import_playbook: secrets.yml      # Collect Secrets
-- import_playbook: tools.yml        # Pull OpenShift oc, openshift-install, and kubectl binaries 
 - import_playbook: images.yml       # Download OCP Infra Container Images
 - import_playbook: bundle.yml       # Bundle artifacts for airgap pivot
-# import_playbook: upload.yml       # Push artifacts to desired location
