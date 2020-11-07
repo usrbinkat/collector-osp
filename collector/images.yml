@@ -15,7 +15,7 @@
     
     - name: "{{ ansible_name_module }} | command:jq.results.name | Itemize OSP Images List"
       shell: |
-          podman search --format "{{.Name}}" registry.redhat.io/rhosp | tail -n+2 
+          "podman search --format '{{.Name}}' registry.redhat.io/rhosp | tail -n+2"
       register: osp_images_list
     
 #   - name: "{{ ansible_name_module }} | command:jq.results.name | Itemize OSP Images List"
